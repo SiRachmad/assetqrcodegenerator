@@ -31,41 +31,50 @@ export default function Home() {
   const GenerateQRCode = () => {
     if (StrQRContent.current) {
       setqrData(StrQRContent.current.value);
-      const printFrame = document.createElement("iframe");
-      printFrame.style.position = "absolute";
-      printFrame.style.width = "0px";
-      printFrame.style.height = "0px";
-      printFrame.style.border = "none";
-      document.body.appendChild(printFrame);
 
-      const doc = printFrame.contentDocument || printFrame.contentWindow?.document;
-      doc?.open();
-      doc?.write(`
-        <html>
-          <head>
-            <title>Print Preview</title>
-            <style>
-              @page {
-                size: 3cm 2cm;
-                margin: 0cm;
-              }
-              body {
-                font-family: Arial, sans-serif;
-              }
-            </style>
-          </head>
-          <body>
-            <img src="${document.querySelector("canvas")?.toDataURL()}"/>
-            <script>
-              window.onload = function() {
-                window.print();
-                setTimeout(() => window.close(), 100);
-              };
-            </script>
-          </body>
-        </html>
-      `);
-      doc?.close();
+      // Wait for QR Code to update first
+      setTimeout(() => {
+        const getcanvas = document.querySelector("canvas");
+        if (!getcanvas) {
+          alert("cannot found canvas");
+          return;
+        }
+        const printFrame = document.createElement("iframe");
+        printFrame.style.position = "absolute";
+        printFrame.style.width = "0px";
+        printFrame.style.height = "0px";
+        printFrame.style.border = "none";
+        document.body.appendChild(printFrame);
+
+        const doc = printFrame.contentDocument || printFrame.contentWindow?.document;
+        doc?.open();
+        doc?.write(`
+          <html>
+            <head>
+              <title>Print Preview</title>
+              <style>
+                @page {
+                  size: 3cm 2cm;
+                  margin: 0cm;
+                }
+                body {
+                  font-family: Arial, sans-serif;
+                }
+              </style>
+            </head>
+            <body>
+              <img src="${document.querySelector("canvas")?.toDataURL()}"/>
+              <script>
+                window.onload = function() {
+                  window.print();
+                  setTimeout(() => window.close(), 100);
+                };
+              </script>
+            </body>
+          </html>
+        `);
+        doc?.close();
+      }, 300); // Delay ensures QR code finishes rendering
     }
   }
   return (
