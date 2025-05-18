@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import { QRCodeCanvas } from "qrcode.react";
+import { useQRCode } from "next-qrcode";
 
 export default function Home() {
   useEffect(() => {
@@ -15,6 +15,7 @@ export default function Home() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+  const { Canvas } = useQRCode();
   const StrQRContent = React.useRef<HTMLInputElement>(null);
   const etLocation = React.useRef<HTMLSelectElement>(null);
   const etAccount = React.useRef<HTMLSelectElement>(null);
@@ -89,10 +90,14 @@ export default function Home() {
         <div className="mt-2 mb-2"><button onClick={GenerateQRCode} className="btn btn-success mt-1 mb-1 w-25" id="btnGenerate" type="button">Generate</button></div>
         {qrData && (
           <div className="mt-2 mb-2">
-            <QRCodeCanvas
-              value = {qrData}
-              level = "H"
-              size = {64}
+            <Canvas
+              text = {qrData}
+              options = {{
+                errorCorrectionLevel: "H",
+                scale: 4,
+                margin: 0,
+                width: 64
+              }}
             />
           </div>
         )}
