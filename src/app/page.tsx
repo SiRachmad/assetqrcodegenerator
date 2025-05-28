@@ -24,7 +24,9 @@ export default function Home() {
   const GeneratePrefix = () => {
     if (StrQRContent.current && etLocation.current && etPerolehan.current && etAccount.current) {
       const selectedDate = new Date(etPerolehan.current.value);
-      const yyMM = `${selectedDate.getFullYear().toString().slice(-2)}${(selectedDate.getMonth() + 1).toString().padStart(2, "0")}`;
+      //const yyMM = `${selectedDate.getFullYear().toString().slice(-2)}${(selectedDate.getMonth() + 1).toString().padStart(2, "0")}`;
+      const yyMM = `${(selectedDate.getMonth() + 1).toString().padStart(2, "0")}`;
+      //StrQRContent.current.value = `${etLocation.current.value}-${etAccount.current.value}-${yyMM}-`;
       StrQRContent.current.value = `${etLocation.current.value}-${etAccount.current.value}-${yyMM}-`;
     }
   }
@@ -86,12 +88,11 @@ export default function Home() {
                 <option value="IDSSMG">IDSSMG</option>
             </select>
             <div><label className="form-label">Account</label><select ref={etAccount} className="form-select-sm w-100 border-2" id="etAccount">
-                    <option value="010" defaultValue={"010"}>Tanah - 010</option>
-                    <option value="020">Bangunan - 020</option>
-                    <option value="031">Mesin - 031</option>
-                    <option value="032">Peralatan - 032</option>
-                    <option value="040">Inventaris - 040</option>
-                    <option value="050">Kendaraan - 050</option>
+                    <option value="01" defaultValue={"01"}>Surabaya</option>
+                    <option value="02">Jember</option>
+                    <option value="03">Semarang</option>
+                    <option value="04">Jakarta</option>
+                    <option value="05">Medan</option>
                 </select></div>
                 <div><label className="form-label">Periode Perolehan</label><input ref={etPerolehan} id="etPerolehan" className="w-100  border-2" type="date"/></div>
         <div className="mt-2 mb-2"><button onClick={GeneratePrefix} className="btn btn-primary mt-1 mb-1 w-25" id="btnPrefix" type="button">Prefix</button></div>
