@@ -95,7 +95,7 @@ export default function Home() {
                     <option value="05">Medan</option>
                 </select></div>
                 <div><label className="hidden form-label">Periode Perolehan</label><input ref={etPerolehan} id="etPerolehan" className="hidden w-100  border-2" type="date"/></div>
-        <div className="mt-2 mb-2"><button onClick={GeneratePrefix} className="hidden btn btn-primary mt-1 mb-1 w-25" id="btnPrefix" type="button">Prefix</button></div>
+        <div className="mt-2 mb-2"><button onClick={GeneratePrefix} className="d-none btn btn-primary mt-1 mb-1 w-25" id="btnPrefix" type="button">Prefix</button></div>
         <div><label className="form-label">QR Content</label><input type="text" ref={StrQRContent} id="etQRContent" className="w-100  border-2"/></div>
         <div className="mt-2 mb-2"><button onClick={GenerateQRCode} className="btn btn-success mt-1 mb-1 w-25" id="btnGenerate" type="button">Generate</button></div>
         {qrData && (
