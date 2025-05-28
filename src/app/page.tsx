@@ -27,7 +27,7 @@ export default function Home() {
       //const yyMM = `${selectedDate.getFullYear().toString().slice(-2)}${(selectedDate.getMonth() + 1).toString().padStart(2, "0")}`;
       const yyMM = `${(selectedDate.getMonth() + 1).toString().padStart(2, "0")}`;
       //StrQRContent.current.value = `${etLocation.current.value}-${etAccount.current.value}-${yyMM}-`;
-      StrQRContent.current.value = `${etAccount.current.value}${yyMM}-`;
+      StrQRContent.current.value = `${etAccount.current.value}${yyMM}`;
     }
   }
   const GenerateQRCode = () => {
