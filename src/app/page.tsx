@@ -81,21 +81,21 @@ export default function Home() {
   }
   return (
     <div className="container-md pb-0 mt-4">
-        <div className="shadow"><label className="form-label">Location</label><select ref={etLocation} className="form-select-sm w-100 border-2" id="etLocation">
+        <div className="shadow"><label className="hidden form-label">Location</label><select ref={etLocation} className="hidden form-select-sm w-100 border-2" id="etLocation">
                 <option value="IDSSBY" defaultValue={"IDSSBY"}>IDSSBY</option>
                 <option value="IDSJBR">IDSJBR</option>
                 <option value="IDSJKT">IDSJKT</option>
                 <option value="IDSSMG">IDSSMG</option>
             </select>
-            <div><label className="form-label">Account</label><select ref={etAccount} className="form-select-sm w-100 border-2" id="etAccount">
+            <div><label className="hidden form-label">Location</label><select ref={etAccount} className="hidden form-select-sm w-100 border-2" id="etAccount">
                     <option value="01" defaultValue={"01"}>Surabaya</option>
                     <option value="02">Jember</option>
                     <option value="03">Semarang</option>
                     <option value="04">Jakarta</option>
                     <option value="05">Medan</option>
                 </select></div>
-                <div><label className="form-label">Periode Perolehan</label><input ref={etPerolehan} id="etPerolehan" className="w-100  border-2" type="date"/></div>
-        <div className="mt-2 mb-2"><button onClick={GeneratePrefix} className="btn btn-primary mt-1 mb-1 w-25" id="btnPrefix" type="button">Prefix</button></div>
+                <div><label className="hidden form-label">Periode Perolehan</label><input ref={etPerolehan} id="etPerolehan" className="hidden w-100  border-2" type="date"/></div>
+        <div className="mt-2 mb-2"><button onClick={GeneratePrefix} className="hidden btn btn-primary mt-1 mb-1 w-25" id="btnPrefix" type="button">Prefix</button></div>
         <div><label className="form-label">QR Content</label><input type="text" ref={StrQRContent} id="etQRContent" className="w-100  border-2"/></div>
         <div className="mt-2 mb-2"><button onClick={GenerateQRCode} className="btn btn-success mt-1 mb-1 w-25" id="btnGenerate" type="button">Generate</button></div>
         {qrData && (
